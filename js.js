@@ -12,6 +12,7 @@
     var tds = document.getElementsByTagName('td'),
         table = document.getElementsByTagName('tbody')[0],
         numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        numbersConst = numbers.slice(0),
         numbersLength = numbers.length,
         dimension = Math.sqrt(numbersLength),
         logicFc = function(){
@@ -41,10 +42,17 @@
             }
         }
         
-    for(var i = 0; i < numbersLength; ++i) {
-        var value = numbers[Math.floor(Math.random(numbers.length) * (numbersLength - i))];
-        tds[i].innerHTML = numbersLength == value ? '' : value;
-        numbers.splice(numbers.indexOf(value), 1);
-        tds[i].addEventListener("click", logicFc, false);
+    var fillFields = function(){
+        numbers = numbersConst.slice(0);
+        for(var i = 0; i < numbersLength; ++i) {
+            var value = numbers[Math.floor(Math.random(numbers.length) * (numbersLength - i))];
+            tds[i].innerHTML = numbersLength == value ? '' : value;
+            numbers.splice(numbers.indexOf(value), 1);
+            tds[i].addEventListener('click', logicFc, false);
+        }    
     }
+    
+    fillFields();
+    
+    document.getElementById('newgame').addEventListener('click', fillFields, false);
 })()
