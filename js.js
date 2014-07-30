@@ -53,9 +53,9 @@
                     var t = a.innerHTML;
                     a.innerHTML = b.innerHTML;
                     b.innerHTML = t;
-                    b.style = 'background-color: #FFB8B3';
-                    a.style = 'background-color: #EBEBEB';
-                    setTimeout(function(){a.style = 'background-color: white';}, 500);
+                    b.style.backgroundColor = '#FFB8B3';
+                    a.style.backgroundColor = '#EBEBEB';
+                    setTimeout(function(){a.style.backgroundColor = 'white';}, 500);                    
                 }
             // if not first column
             if (cellIndex && !this.previousElementSibling.innerHTML) {
@@ -81,17 +81,22 @@
         numbers = numbersConst.slice(0);
         for (var i = 0; i < numbersLength; ++i) {
             var value = numbers[Math.floor(Math.random(numbers.length) * (numbersLength - i))];
-            tds[i].innerHTML = numbersLength == value ? '' : value;
+            if (numbersLength == value) {
+                tds[i].style.backgroundColor = '#FFB8B3';
+                tds[i].innerHTML = '';
+            } else {
+                tds[i].innerHTML = value;
+            }
             numbers.splice(numbers.indexOf(value), 1);
             tds[i].addEventListener('click', logicFc, false);
             tds[i].addEventListener('mouseover', function(){
                 if (this.innerHTML) {
-                    this.style = 'background-color: #EBEBEB';
+                    this.style.backgroundColor = '#EBEBEB';
                 }
             }, false);
             tds[i].addEventListener('mouseout', function(){
                 if (this.innerHTML) {
-                    this.style = 'background-color: white';
+                    this.style.backgroundColor = 'white';
                 }
             }, false);
         }
