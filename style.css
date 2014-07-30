@@ -1,9 +1,19 @@
 table {
-    height: 300px;
-    width: 300px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
 }
 
 td {
     border: 1px solid black;
     text-align: center;
+}
+
+button, select {
+    position: relative;
+    z-index: 1;
 }

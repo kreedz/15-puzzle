@@ -53,8 +53,8 @@
                     var t = a.innerHTML;
                     a.innerHTML = b.innerHTML;
                     b.innerHTML = t;
-                    b.style = 'background-color: white';
-                    a.style = 'background-color: #B0B0B0';
+                    b.style = 'background-color: #FFB8B3';
+                    a.style = 'background-color: #EBEBEB';
                     setTimeout(function(){a.style = 'background-color: white';}, 500);
                 }
             // if not first column
@@ -85,12 +85,16 @@
             numbers.splice(numbers.indexOf(value), 1);
             tds[i].addEventListener('click', logicFc, false);
             tds[i].addEventListener('mouseover', function(){
-                this.style = 'background-color: #EBEBEB';
+                if (this.innerHTML) {
+                    this.style = 'background-color: #EBEBEB';
+                }
             }, false);
             tds[i].addEventListener('mouseout', function(){
-                this.style = 'background-color: white';
+                if (this.innerHTML) {
+                    this.style = 'background-color: white';
+                }
             }, false);
-        }    
+        }
     },
         buildFields = function() {
             removeFields();
