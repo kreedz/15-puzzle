@@ -49,6 +49,9 @@
                 a.style.backgroundColor = 'white';
             }
         }, 500);
+        if (isWin()) {
+            alert('You\'re win!');
+        }
     }
     
     var numbers = [],
@@ -77,10 +80,6 @@
             // if not last row
             } else if (rowIndex != dimension - 1 && !tbl.children[rowIndex + 1].children[cellIndex].innerHTML) {
                 swap(tbl.children[rowIndex + 1].children[cellIndex], this);
-            }
-            
-            if (isWin()) {
-                alert("You're win!");
             }
         }
     
